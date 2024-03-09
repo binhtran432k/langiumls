@@ -1,0 +1,27 @@
+{
+	"name": "@binhtran432k/langiumls",
+	"author": "Binh Tran <binhtran432k@gmail.com>",
+	"version": "0.0.1",
+	"type": "module",
+	"bin": {
+		"langiumls": "./bin/server.js"
+	},
+	"files": ["bin", "lib"],
+	"scripts": {
+		"build": "tsc",
+		"ci": "biome ci .",
+		"check": "biome check .",
+		"check:apply": "biome check --apply-unsafe ."
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.5.3",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"dependencies": {
+		"ignore": "^5.3.1",
+		"langium": "^3.0.0"
+	}
+}

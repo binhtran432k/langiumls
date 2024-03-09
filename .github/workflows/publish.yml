@@ -1,0 +1,36 @@
+name: Publish
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  npm:
+    name: Publish lib to npmjs.com
+    runs-on: ubuntu-latest
+    needs: release
+    strategy:
+      fail-fast: false
+      matrix:
+        bun_version: [1.0.30]
+        os: [ubuntu-latest]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Bun ${{ matrix.bun_version }}
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: ${{ matrix.bun_version }}
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Run CI check
+        run: bun run build
+
+      - name: Publish lib to npmjs.com
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        run: |
+          npm publish
