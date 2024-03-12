@@ -2,9 +2,14 @@
 	"name": "@binhtran432k/langiumls",
 	"author": "Binh Tran <binhtran432k@gmail.com>",
 	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/binhtran432k/langiumls.git"
+	},
+	"license": "MIT",
 	"type": "module",
 	"bin": {
-		"langiumls": "./bin/server.js"
+		"langiumls": "bin/server.js"
 	},
 	"files": ["bin", "lib"],
 	"scripts": {
